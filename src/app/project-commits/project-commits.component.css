@@ -1,0 +1,51 @@
+hr {
+    border: 1px solid blue;
+
+}
+
+span{
+    font-weight: bolder;
+    font-size: 1em;
+}
+
+.commits{
+    height: 550px;
+    width: 40%;
+    overflow-y: scroll;
+    border-radius: 15px 0 0 15px;
+    border-color: blue;
+    border-style: solid;
+    border-width: 2px;
+    background-color:cyan;
+    margin: 0 70px 0 35px;
+    padding: 20px;
+    float: right;
+}
+
+.commits li{
+    text-transform: capitalize;
+    background-color:cyan;
+    font-weight: bold;
+    list-style-type: none;
+    font-size: 0.9em;
+    text-align: center;
+    color: blue;
+}
+
+.button{
+    color: blue;  
+    width: 40%;
+    height: 100px;
+    float: right;
+    margin-top: 1%;
+}
+
+#bLeft{
+    float: left;
+    margin-left: 20%;
+}
+
+#bRight{
+    float: right;
+}
+

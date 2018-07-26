@@ -1,0 +1,15 @@
+<div *ngIf="commits">
+  <ul class="commits">
+    <li *ngFor="let commit of commits">
+      <p><span>Id:</span> {{commit.sha}}</p>
+      <p><span>Author:</span> {{commit.commit.author.name}}</p>
+      <p><span>Date:</span> {{commit.commit.author.date}}</p>
+      <p><span>Message:</span> {{commit.commit.message}}</p>
+      <hr/>
+    </li>  
+  </ul>
+  <div class="button">
+    <i id="bLeft" *ngIf="page > 1" (click)="prev()" class="fa fa-arrow-circle-left fa-4x button" aria-hidden="true"></i>
+    <i id="bRight" *ngIf="commits.length == 20" (click)="next()" class="fa fa-arrow-circle-right fa-4x button" aria-hidden="true"></i>
+  </div>
+</div>
