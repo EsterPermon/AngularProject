@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
+import {Project} from './project';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,19 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getProjects():Observable<Object []>{
+  getProjects():Observable<Project []>{
     const projectsUrl = this.apiUrl + '/users/' + this.user + '/repos';
-    return this.http.get<Object []>(projectsUrl)
+    return this.http.get<Project []>(projectsUrl)
       .pipe(
+        map((projects:Project[]) => {
+          return projects.map((project: Project) => {
+            return{
+              name: project.name,
+              forks_count: project.forks_count,
+              stargazers_count: project.stargazers_count
+            };
+          });
+        }),
         catchError(this.handleError('getProjects',[]))
       );
   }
