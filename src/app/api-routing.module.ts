@@ -4,10 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {ProjectDetailComponent} from './project-detail/project-detail.component';
 import {ProjectCommitsComponent} from './project-commits/project-commits.component';
+import {ProjectsListComponent} from './projects-list/projects-list.component';
 
 const routes: Routes = [
   {path: ':name', component: ProjectDetailComponent},
-  {path: ':name/:page', component: ProjectCommitsComponent},
+  
   
 ]
 

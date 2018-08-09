@@ -1,5 +1,5 @@
 <ul class= "projects">
-  <li *ngFor="let project of projects | async">
+  <li *ngFor="let project of projects">
     <a routerLink="/{{project.name}}" routerLinkActive="active">
       {{project.name}}<span class="stars">{{project.stargazers_count}} <i class="fa fa-star" aria-hidden="true"></i></span>
     </a>

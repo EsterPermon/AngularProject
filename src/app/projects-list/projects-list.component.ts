@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { RouterLink } from '@angular/router';
 import { Location } from '@angular/common';
-import {Project} from '../project'
 import { Observable } from '../../../node_modules/rxjs';
 
 @Component({
@@ -13,18 +12,18 @@ import { Observable } from '../../../node_modules/rxjs';
 })
 export class ProjectsListComponent implements OnInit {
 
-  projects: Observable<Project[]>;
+  projects: Object[];
 
   constructor(
     private apiService: ApiService) { }
 
   ngOnInit() {
-    this.projects = this.getProjects();
-    this.projects.subscribe(x => x.map(xi => console.log(xi.name)));
+    this.getProjects();
   }
 
-  getProjects(): Observable< Project[]>{
-    return this.apiService.getProjects();
+  getProjects(): void{
+    this.apiService.getProjects()
+      .subscribe(projects => this.projects = projects);
   }
 
 }

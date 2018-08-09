@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 import {ApiService} from '../api.service';
 
@@ -12,6 +13,8 @@ import {ApiService} from '../api.service';
 export class ProjectDetailComponent implements OnInit {
 
   project: Object;
+  subscript: Subscription;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -21,11 +24,19 @@ export class ProjectDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getProject();
+    this.subscript = this.route.params.subscribe(
+      (params: any) => {
+        this.getProject(params['name']);
+      }
+    )
+    
   }
 
-  getProject(): void{
-    var name = this.route.snapshot.paramMap.get('name');
+  ngOnDestroy(){
+    this.subscript.unsubscribe();
+  }
+
+  getProject(name: string): void{
     this.apiService.getProject(name)
       .subscribe(project => this.project = project);
   }
