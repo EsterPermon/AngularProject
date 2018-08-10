@@ -15,26 +15,26 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getProjects():Observable<Object []>{
+  getProjects():Observable<any []>{
     const projectsUrl = this.apiUrl + '/users/' + this.user + '/repos';
-    return this.http.get<Object []>(projectsUrl)
+    return this.http.get<any []>(projectsUrl)
       .pipe(
         catchError(this.handleError('getProjects',[]))
       );
   }
 
-  getProject(name: string): Observable<Object> {
+  getProject(name: string): Observable<any> {
     const projectUrl = this.apiUrl + '/repos/' + this.user + '/'+ name;
-    return this.http.get<Object>(projectUrl)
+    return this.http.get<any>(projectUrl)
       .pipe(
-        catchError(this.handleError<Object>(`getProject name=${name}`))
+        catchError(this.handleError<any>(`getProject name=${name}`))
       )
 
   }
 
-  getCommits(name: string, page): Observable<Object[]>{
+  getCommits(name: string, page): Observable<any[]>{
     const commitsUrl = this.apiUrl + '/repos/' + this.user + '/'+ name + '/commits?page='+ page +'&per_page=20';
-    return this.http.get<Object[]> (commitsUrl)
+    return this.http.get<any[]> (commitsUrl)
       .pipe(
         catchError(this.handleError('getCommits',[]))
       );

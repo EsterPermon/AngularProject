@@ -11,7 +11,7 @@ import {ApiService} from '../api.service';
 })
 export class ProjectDetailComponent implements OnInit {
 
-  project: Object;
+  project: any;
   subscript: Subscription;
   name: string;
 

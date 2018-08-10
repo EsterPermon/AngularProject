@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class ProjectCommitsComponent implements OnInit {
 
-  commits: Object[];
+  commits: any[];
   page = 1;
   subscript: Subscription;
   name: string

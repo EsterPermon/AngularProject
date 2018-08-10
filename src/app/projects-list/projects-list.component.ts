@@ -9,7 +9,7 @@ import { ApiService } from '../api.service';
 })
 export class ProjectsListComponent implements OnInit {
 
-  projects: Object[];
+  projects: any[];
 
   constructor(
     private apiService: ApiService) { }
