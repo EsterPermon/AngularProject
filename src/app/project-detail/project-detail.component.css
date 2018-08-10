@@ -14,7 +14,7 @@ span{
     border-style: solid;
     border-width: 2px;
     background-color:cyan;
-    margin: 45px;
+    margin: 40px 45px 0 45px;
     height: 20%;
     padding: 20px;
     float: right; 
