@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from '../api.service';
-import { RouterLink } from '@angular/router';
-import { Location } from '@angular/common';
-import { Observable } from '../../../node_modules/rxjs';
 
 @Component({
   selector: 'app-projects-list',
@@ -23,7 +20,10 @@ export class ProjectsListComponent implements OnInit {
 
   getProjects(): void{
     this.apiService.getProjects()
-      .subscribe(projects => this.projects = projects);
+      .subscribe(projects => this.projects = projects
+        .sort((a, b) => {
+          return b.stargazers_count - a.stargazers_count;
+        }))
   }
 
 }

@@ -2,12 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { ProjectsListComponent } from './projects-list/projects-list.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { ApiRoutingModule } from './api-routing.module';
 import { ProjectCommitsComponent } from './project-commits/project-commits.component';
+
+const routes: Routes = [
+  {path: '', component: ProjectsListComponent}
+]
 
 @NgModule({
   declarations: [
@@ -17,12 +22,15 @@ import { ProjectCommitsComponent } from './project-commits/project-commits.compo
     ProjectCommitsComponent
   ],
   imports: [
+    RouterModule.forRoot(routes),
     AngularFontAwesomeModule,
     BrowserModule,
     HttpClientModule,
     ApiRoutingModule
   ],
-  providers: [],
+  exports:[RouterModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+  

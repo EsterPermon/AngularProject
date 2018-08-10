@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -11,24 +11,24 @@ import { Subscription } from 'rxjs';
 export class ProjectCommitsComponent implements OnInit {
 
   commits: Object[];
-  page: number;
+  page = 1;
   subscript: Subscription;
   name: string
 
   constructor(
     private apiService: ApiService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.page = 1;
+    console.log(this.page);
     this.subscript = this.route.params.subscribe(
       (params: any) => {
         this.name = params['name'];
         this.getCommits(this.name, this.page);
       }
     )
-    
   }
 
   ngOnDestroy(){
@@ -40,12 +40,16 @@ export class ProjectCommitsComponent implements OnInit {
   }
 
   next(){
+    
     this.page++;
-    this.getCommits(this.name, this.page)
+    console.log(this.page);
+    this.getCommits(this.name, this.page);
+    this.router.navigate([this.name], {queryParams: {'page':this.page}})
   }
 
   prev(){
     this.page--;
     this.getCommits(this.name, this.page)
+    this.router.navigate([this.name], {queryParams: {'page':this.page}})
   }
 }
