@@ -9,6 +9,7 @@ import { ProjectsListComponent } from './projects-list/projects-list.component';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { ApiRoutingModule } from './api-routing.module';
 import { ProjectCommitsComponent } from './project-commits/project-commits.component';
+import { ApiService } from './api.service';
 
 const routes: Routes = [
   {path: '', component: ProjectsListComponent}
@@ -29,6 +30,7 @@ const routes: Routes = [
     ApiRoutingModule
   ],
   exports:[RouterModule],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
